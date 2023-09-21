@@ -1,0 +1,155 @@
+/*  =========== google fonts ========== */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto:ital@1&display=swap');
+
+
+
+:root {
+
+    --primary-color: #7c5dfa;
+    --secondary-color: #1e2139;
+    --body-bg: #141625;
+    --paid-status-bg: #1f2c3f;
+    --paid-status-color: #32cf9b;
+    --pending-status-bg: rgba(255, 143, 0, 0.06);
+    --pending-status-color: #ff8f00;
+    --small-text-color: #888eb0;
+    --draft-bg: #252945
+}
+
+/* ========= base style ============== */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif
+}
+
+body {
+    background: var(--body-bg);
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+.btn {
+    padding: 7px 25px;
+    background: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+p {
+    font-size: 0.8rem;
+    color: var(--small-text-color)
+}
+
+.main_container {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: calc(100% - 13%);
+    padding: 30px 0px;
+}
+
+.pending_status,
+.paid_status,
+.draft_status,
+.edit_btn,
+.delete_btn,
+.mark_as-btn,
+.draft_btn {
+
+    padding: 10px 25px;
+    width: 100px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.paid_status{
+    background: var(--paid-status-bg);
+    color: var(--paid-status-color);
+}
+
+.pending_status{
+    background: var(--pending-status-bg);
+    color: var(--pending-status-color)
+}
+
+/*  ============ sidebar css ================ */
+
+.sidebar {
+    width: 120px;
+    height: 100vh;
+    background: var(--secondary-color) !important;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.sidebar_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar_header,
+.sidebar_bottom {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 0px 20px 20px 0px;
+    background: var(--primary-color);
+}
+
+.sidebar_bottom {
+    background: var(--secondary-color) !important;
+    border-top: 1px solid var(--primary-color);
+}
+
+.sidebar_bottom img {
+    border-radius: 50%;
+}
+
+/*  ============== home css =============== */
+
+.invoice_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+    margin-bottom: 50px;
+}
+
+.invoice_header-logo h3 {
+    color: #fff;
+}
+
+.invoice_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background: var(--secondary-color);
+    border-radius: 0.5rem;
+    margin-bottom: 1.9rem;
+    transition: 1s;
+    color: #fff;
+}
+
+.invoice_item:hover {
+    border: 1px solid var(--primary-color);
+    transform: scaleY(1.1);
+}
