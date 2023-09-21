@@ -13,7 +13,8 @@
     --pending-status-bg: rgba(255, 143, 0, 0.06);
     --pending-status-color: #ff8f00;
     --small-text-color: #888eb0;
-    --draft-bg: #252945
+    --draft-bg: #252945;
+
 }
 
 /* ========= base style ============== */
@@ -39,6 +40,15 @@ a {
     color: #fff;
     cursor: pointer;
     border-radius: 5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #fff
 }
 
 p {
@@ -72,12 +82,12 @@ p {
     font-weight: 600;
 }
 
-.paid_status{
+.paid_status {
     background: var(--paid-status-bg);
     color: var(--paid-status-color);
 }
 
-.pending_status{
+.pending_status {
     background: var(--pending-status-bg);
     color: var(--pending-status-color)
 }
@@ -153,3 +163,225 @@ p {
     border: 1px solid var(--primary-color);
     transform: scaleY(1.1);
 }
+
+.invoice_container {
+    padding-bottom: 200px !important;
+}
+
+
+/*  ================ home css end ============= */
+
+/*  ===================== invoice details css  =================*/
+
+.back_btn {
+    margin-bottom: 1.9rem;
+}
+
+.back_btn h6 {
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.details_status {
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+}
+
+.invoice_details-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    border-radius: 0.5rem;
+    margin-bottom: 1.9rem;
+    background: var(--secondary-color);
+}
+
+.details_btn {
+    display: flex;
+    align-items: center;
+    column-gap: 1.1rem;
+}
+
+.mark_as-btn {
+    width: 130px;
+    padding: 10px 5px;
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.delete_btn {
+    background: red;
+    color: #fff;
+}
+
+.edit_btn {
+
+    background: #1f2c3f;
+    color: #fff
+}
+
+.invoice_details {
+    background: var(--secondary-color);
+    padding: 30px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.details_box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.9rem;
+
+}
+
+.invoice_created-date {
+    margin-bottom: 1.9rem;
+}
+
+.invoice_created-date p,
+.invoice_payment {
+    margin-bottom: 5px;
+}
+
+.invoice_client-address p {
+    margin-bottom: 5px;
+}
+
+.invoice_client-address h4 {
+    margin-bottom: 10px;
+}
+
+
+.invoice_item-box {
+    background: #252945;
+    padding: 30px;
+    border-radius: 7px 7px 0px 0px;
+}
+
+.list {
+    list-style: none;
+}
+
+.list_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.list_item-box {
+    width: 25%;
+    text-align: right;
+}
+
+.item_name-box {
+    width: 50%;
+}
+
+.grand_total {
+    background: #0c0e16;
+    padding: 30px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    border-radius: 0px 0px 7px 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.new_invoice {
+    width: 60%;
+    margin: auto;
+}
+
+.new_invoice-header {
+    margin-bottom: 1.9rem;
+}
+
+.form_group input {
+    padding: 12px 20px;
+    width: 100%;
+    border-radius: 5px;
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.form_group {
+    margin-bottom: 1.9rem;
+}
+
+.form_group p {
+    margin-bottom: 10px;
+}
+
+.inline_form-group {
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.inline_group {
+    width: 48%;
+}
+
+.new_invoice-form {
+    padding-bottom: 40px;
+}
+
+.bill_title {
+    margin-bottom: 20px;
+}
+
+.bill_to {
+    margin-top: 50px;
+}
+
+.invoice_items {
+    margin-top: 70px;
+}
+
+.invoice_items h3 {
+    margin-bottom: 30px;
+}
+
+.add_item-btn {
+    width: 100%;
+    background: var(--secondary-color);
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+.draft_btn {
+    background: #1f2c3f;
+    color: #fff;
+    margin-right: 30px;
+    width: 150px !important;
+}
+
+.new_invoice-btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+
+.icon-container {
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 20px;
+    text-align: center;
+    display: block !important;
+    font-size: 2rem;
+    gap: 5%;
+}
+
