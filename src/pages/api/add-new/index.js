@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb'
 
 async function handler(req, res) {
 
-    const client = await MongoClient.connect("mongodb+srv://noman12:sjEpavXN4wOP5rTz@cluster0.jucwity.mongodb.net/invoices2?retryWrites=true&w=majority", { useNewUrlParser: true })
+    const client = await MongoClient.connect("mongodb+srv://noman20:cTLswRDdUebTqgPM@cluster0.jucwity.mongodb.net/invoice?retryWrites=true&w=majority", { useNewUrlParser: true })
 
 
     if (req.method === 'POST') {
@@ -33,7 +33,6 @@ async function handler(req, res) {
         const db = client.db()
         const collection = db.collection('allInvoices')
         await collection.insertOne(invoice)
-
         res.status(200).json({ message: 'Invoice added succesfully' })
         client.close()
     }

@@ -5,12 +5,11 @@ import { useRouter } from 'next/router';
 const InvoiceDetails = () => {
 
     const router = useRouter();
-    const goBack = () => router.push('/')
     return (
         <>
             <div className="main_container">
                 <div className="back_btn">
-                    <h6 onClick={goBack}>Go Back</h6>
+                    <h6 onClick={() => router.push('/')}>Go Back</h6>
                 </div>
 
                 {/*  ========== invoice details header =============== */}

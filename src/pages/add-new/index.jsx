@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 const addNew = () => {
 
@@ -76,12 +77,10 @@ const addNew = () => {
 
             })
             const data = await res.json()
-            console.log(data)
+            toast.success(data.message)
             router.push('/')
-            alert(data.message)
         } catch (error) {
-            console.log("Something went wrong")
-
+            toast.error('Something went wrong')
         }
     }
 
@@ -197,7 +196,7 @@ const addNew = () => {
                             }
                         </div>
                         <button className="add_item-btn" onClick={addItems}>
-                            Add New Item
+                            Add New Item    
                         </button>
 
                         <div className="new_invoice-btns">
