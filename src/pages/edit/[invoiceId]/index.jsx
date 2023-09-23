@@ -1,25 +1,11 @@
 import React, { useState, useRef } from 'react'
 import { useRouter } from 'next/router';
 
-const addNew = () => {
+const EditItem = () => {
 
 
     const router = useRouter();
     const [items, setItems] = useState([])
-
-    const senderSheet = useRef('')
-    const senderCity = useRef('')
-    const senderPostalCode = useRef('')
-    const senderCountry = useRef('')
-    const clientName = useRef('')
-    const clientEmail = useRef('')
-    const clientStreet = useRef('')
-    const clientCity = useRef('')
-    const clientPostalCode = useRef('')
-    const clientCountry = useRef('')
-    const description = useRef('')
-    const createdAt = useRef('')
-    const paymentTerms = useRef('')
 
     // add product items
     const addItems = () => {
@@ -40,57 +26,12 @@ const addNew = () => {
         inputData.splice(i, 1)
         setItems(inputData)
     }
-
-    // total amount of all product items
-    const totalAmount = items.reduce((acc, curr) => (acc + curr.total), 0);
-
-    // submit data to the database
-
-    const createInvoice = async status => {
-        try {
-            const res = await fetch('/api/add-new', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-
-                body: JSON.stringify({
-                    senderSheet: senderSheet.current.value,
-                    senderCity: senderCity.current.value,
-                    senderPostalCode: senderPostalCode.current.value,
-                    senderCountry: senderCountry.current.value,
-                    clientName: clientName.current.value,
-                    clientEmail: clientEmail.current.value,
-                    clientStreet: clientStreet.current.value,
-                    clientCity: clientStreet.current.value,
-                    clientPostalCode: clientStreet.current.value,
-                    clientCountry: clientStreet.current.value,
-                    description: description.current.value,
-                    createdAt: createdAt.current.value,
-                    paymentDue: createdAt.current.value,
-                    paymentTerms: paymentTerms.current.value,
-                    status: status,
-                    items: items,
-                    total: totalAmount
-                }),
-
-            })
-            const data = await res.json()
-            console.log(data)
-            router.push('/')
-            alert(data.message)
-        } catch (error) {
-            console.log("Something went wrong")
-
-        }
-    }
-
     return (
         <>
             <div className="main_container">
                 <div className="new_invoice">
                     <div className="new_invoice-header">
-                        <h3>New Invoice</h3>
+                        <h3>Edit #RT5840</h3>
                     </div>
                     {/*  ========== new invoice ============== */}
                     <div className="new_invoice-form">
@@ -100,20 +41,20 @@ const addNew = () => {
                             </p>
                             <div className="form_group">
                                 <p>Street Address</p>
-                                <input type="text" ref={senderSheet} />
+                                <input type="text" />
                             </div>
                             <div className="form_group inline_form-group">
                                 <div className="form_group">
                                     <p>City</p>
-                                    <input type="text" ref={senderCity} />
+                                    <input type="text" />
                                 </div>
                                 <div className="form_group">
                                     <p>Postal Code</p>
-                                    <input type="text" ref={senderPostalCode} />
+                                    <input type="text" />
                                 </div>
                                 <div className="form_group">
                                     <p>Country</p>
-                                    <input type="text" ref={senderCountry} />
+                                    <input type="text" />
                                 </div>
                             </div>
                         </div>
@@ -123,45 +64,45 @@ const addNew = () => {
                             </p>
                             <div className="form_group">
                                 <p>Client Name</p>
-                                <input type="text" ref={clientName} />
+                                <input type="text" />
                             </div>
 
                             <div className="form_group">
                                 <p>Client Email</p>
-                                <input type="email" ref={clientEmail} />
+                                <input type="email" />
                             </div>
                             <div className="form_group">
                                 <p>Street Address</p>
-                                <input type="text" ref={clientStreet} />
+                                <input type="text" />
                             </div>
                             <div className="form_group inline_form-group">
                                 <div className="form_group">
                                     <p>City</p>
-                                    <input type="text" ref={clientCity} />
+                                    <input type="text" />
                                 </div>
                                 <div className="form_group">
                                     <p>Postal Code</p>
-                                    <input type="text" ref={clientPostalCode} />
+                                    <input type="text" />
                                 </div>
                                 <div className="form_group">
                                     <p>Country</p>
-                                    <input type="text" ref={clientCountry} />
+                                    <input type="text" />
                                 </div>
                             </div>
                             <div className="form_group inline_form-group">
                                 <div className="inline_group">
                                     <p>Invoice Data</p>
-                                    <input type="date" ref={createdAt} />
+                                    <input type="date" />
                                 </div>
                                 <div className="inline_group">
                                     <p>Payment Terms</p>
-                                    <input type="text" ref={paymentTerms} />
+                                    <input type="text" />
                                 </div>
                             </div>
 
                             <div className="form_group">
                                 <p>Project Description</p>
-                                <input type="text" ref={description} />
+                                <input type="text" />
                             </div>
                         </div>
                         {/* ========= invoice product items ========== */}
@@ -182,7 +123,7 @@ const addNew = () => {
                                             </div>
                                             <div>
                                                 <p>Price</p>
-                                                <input type="number" name='price' onChange={(e) => handleChange(e, i)} />
+                                                <input type="number" name='price' onChange={(e) => handleChanage(e, i)} />
                                             </div>
                                             <div>
                                                 <p>Total</p>
@@ -199,17 +140,13 @@ const addNew = () => {
                         <button className="add_item-btn" onClick={addItems}>
                             Add New Item
                         </button>
-
-                        <div className="new_invoice-btns">
-                            <button className="edit_btn" onClick={() => router.push('/')}>
-                                Discard
-                            </button>
+                        <div className="new_invoice-btns" style={{justifyContent: 'end'}}>
                             <div>
-                                <button className="draft_btn" onClick={() => createInvoice("draft")}>
-                                    Save as draft
+                                <button className="draft_btn" onClick={`/invoices/id`}>
+                               Cancel
                                 </button>
-                                <button className="mark_as-btn" onClick={() => createInvoice("pending")}>
-                                    Send & Save
+                                <button className="mark_as-btn">
+                               Save Changes
                                 </button>
                             </div>
                         </div>
@@ -220,4 +157,4 @@ const addNew = () => {
     )
 }
 
-export default addNew;
+export default EditItem;

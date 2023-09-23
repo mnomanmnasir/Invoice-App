@@ -321,7 +321,7 @@ p {
 .inline_form-group {
     display: flex;
     align-items: center;
-
+    gap: 1rem;
     justify-content: space-between;
 }
 
@@ -384,4 +384,3 @@ p {
     font-size: 2rem;
     gap: 5%;
 }
-

@@ -11,22 +11,22 @@ const Sidebar = () => {
         <div className="sidebar">
             <div className="sidebar_container">
                 <div className="sidebar_header">
-                    <div className="sidebar_logo">
-                        <h2>Noman Coder's</h2>
+                     <div className="sidebar_logo">
+                        <h2>Noman</h2>
                     </div>
                 </div>
                 <div className="icon-container">
                     <FaHome />
-                    <div style={{padding: '10%'}}>
+                    <div style={{ padding: '10%' }}>
                         <FaBuffer />
                     </div>
-                    <div style={{padding: '10%'}}>
+                    <div style={{ padding: '10%' }}>
                         <FaHospitalUser />
                     </div>
-                    <div style={{padding: '10%'}}>
+                    <div style={{ padding: '10%' }}>
                         <FaBeer />
                     </div>
-                    <div style={{padding: '10%'}}>
+                    <div style={{ padding: '10%' }}>
                         <FaServicestack />
                     </div>
                 </div>

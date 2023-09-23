@@ -3,12 +3,12 @@ import Sidebar from '../Sidebar/Sidebar';
 
 
 const Layout = (props) => {
-return(
-<Fragment>
+    return (
+        <Fragment>
 
-    <Sidebar />
-    <div>{props.children}</div>
-</Fragment>
+            <Sidebar />
+            <div>{props.children}</div>
+        </Fragment>
     )
 }
 
