@@ -384,3 +384,10 @@ p {
     font-size: 2rem;
     gap: 5%;
 }
+
+
+.disable{
+    cursor: none;
+    pointer-events: none;
+    opacity: 50%;
+}

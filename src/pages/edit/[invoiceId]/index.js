@@ -123,7 +123,7 @@ const EditItem = () => {
                                             </div>
                                             <div>
                                                 <p>Price</p>
-                                                <input type="number" name='price' onChange={(e) => handleChanage(e, i)} />
+                                                <input type="number" name='price' onChange={(e) => handleChange(e, i)} />
                                             </div>
                                             <div>
                                                 <p>Total</p>

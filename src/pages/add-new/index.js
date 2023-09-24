@@ -8,7 +8,7 @@ const addNew = () => {
     const router = useRouter();
     const [items, setItems] = useState([])
 
-    const senderSheet = useRef('')
+    const senderStreet = useRef('')
     const senderCity = useRef('')
     const senderPostalCode = useRef('')
     const senderCountry = useRef('')
@@ -43,11 +43,11 @@ const addNew = () => {
     }
 
     // total amount of all product items
-    const totalAmount = items.reduce((acc, curr) => (acc + curr.total), 0);
+    const totalAmount = items.reduce((acc, curr) => acc + curr.total, 0);
 
     // submit data to the database
 
-    const createInvoice = async status => {
+    const createInvoice = async (status) => {
         try {
             const res = await fetch('/api/add-new', {
                 method: 'POST',
@@ -56,16 +56,16 @@ const addNew = () => {
                 },
 
                 body: JSON.stringify({
-                    senderSheet: senderSheet.current.value,
+                    senderStreet: senderStreet.current.value,
                     senderCity: senderCity.current.value,
                     senderPostalCode: senderPostalCode.current.value,
                     senderCountry: senderCountry.current.value,
                     clientName: clientName.current.value,
                     clientEmail: clientEmail.current.value,
                     clientStreet: clientStreet.current.value,
-                    clientCity: clientStreet.current.value,
-                    clientPostalCode: clientStreet.current.value,
-                    clientCountry: clientStreet.current.value,
+                    clientCity: clientCity.current.value,
+                    clientPostalCode: clientPostalCode.current.value,
+                    clientCountry: clientCountry.current.value,
                     description: description.current.value,
                     createdAt: createdAt.current.value,
                     paymentDue: createdAt.current.value,
@@ -99,7 +99,7 @@ const addNew = () => {
                             </p>
                             <div className="form_group">
                                 <p>Street Address</p>
-                                <input type="text" ref={senderSheet} />
+                                <input type="text" ref={senderStreet} />
                             </div>
                             <div className="form_group inline_form-group">
                                 <div className="form_group">
@@ -195,6 +195,7 @@ const addNew = () => {
                                 ))
                             }
                         </div>
+
                         <button className="add_item-btn" onClick={addItems}>
                             Add New Item    
                         </button>

@@ -5,10 +5,11 @@ async function handler(req, res) {
     const client = await MongoClient.connect("mongodb+srv://noman20:cTLswRDdUebTqgPM@cluster0.jucwity.mongodb.net/invoice?retryWrites=true&w=majority", { useNewUrlParser: true })
 
 
+
     if (req.method === 'POST') {
         const invoice = {
             senderAddress: {
-                street: req.body.senderAddress,
+                street: req.body.senderStreet,
                 city: req.body.senderCity,
                 postalCode: req.body.senderPostalCode,
                 country: req.body.senderCountry
@@ -16,7 +17,7 @@ async function handler(req, res) {
             clientName: req.body.clientName,
             clientEmail: req.body.clientEmail,
             clientAddress: {
-                street: req.body.clientAddress,
+                street: req.body.clientStreet,
                 city: req.body.clientCity,
                 postalCode: req.body.clientPostalCode,
                 country: req.body.clientCountry

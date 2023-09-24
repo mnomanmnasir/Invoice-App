@@ -2,6 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router';
 import { MongoClient, ObjectId } from 'mongodb'
 
+
 const InvoiceDetails = (props) => {
 
     const router = useRouter();
@@ -37,7 +38,7 @@ const InvoiceDetails = (props) => {
                         <button className="delete_btn">
                             Delete
                         </button>
-                        <button className="mark_as-btn">
+                        <button className={`${data.status === 'paid' || data.status === 'draft' ? 'disable' : ''} mark_as-btn`}>
                             Mark as Paid
                         </button>
                     </div>
