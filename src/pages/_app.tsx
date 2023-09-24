@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
         autoClose={3000}
         closeOnClick
         theme="light"
+        pauseOnHover={false}
       />
 
       <Component {...pageProps} />
