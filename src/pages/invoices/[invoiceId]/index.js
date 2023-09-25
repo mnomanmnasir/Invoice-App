@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useRouter } from 'next/router';
 import { MongoClient, ObjectId } from 'mongodb'
+import { toast } from 'react-toastify';
 
 
 const InvoiceDetails = (props) => {
@@ -8,12 +9,36 @@ const InvoiceDetails = (props) => {
     const router = useRouter();
 
     const { data } = props;
+    const modalRef = useRef(null)
 
     // Handle navigation back to the home page
     const navigateToHomePage = () => {
         router.push('/');
     };
 
+    //update invoice status  in database
+    const updateStatus = async invoiceId => {
+        const res = await fetch(`/api/invoices/${invoiceId}`, {
+            method: 'PUT'
+        })
+        const data = await res.json();
+    }
+    // delete invoice from the database
+    const deleteInvoice  = async invoiceId =>{
+        try {
+            const res = await fetch(`/api/invoices/${invoiceId}`,{
+                method: 'DELETE'
+            })
+            const data = await res.json();
+            toast.success(data.message)
+            router.push('/') 
+        } catch (error) {
+            toast.error("Something went wrong!")
+        }
+    }
+
+    // open modal 
+    const modalToggle = () => modalRef.current.classList.toggle('showModal')
     return (
         <>
             <div className="main_container">
@@ -27,7 +52,10 @@ const InvoiceDetails = (props) => {
                 <div className="invoice_details-header">
                     <div className="details_status">
                         <p>Status</p>
-                        <button className='pending_status'>
+                        <button className={`${data.status === 'paid'
+                            ? 'paid_status'
+                            : data.status === 'pending'
+                                ? 'pending_status' : 'draft_status'}`}>
                             {data.status}
                         </button>
                     </div>
@@ -35,10 +63,25 @@ const InvoiceDetails = (props) => {
                         <button className="edit_btn" onClick={() => router.push(`/edit/${data.id}`)}>
                             Edit
                         </button>
-                        <button className="delete_btn">
+                        {/* confirm deletion modal start */}
+                        <div className='delete_modal' ref={modalRef}>
+                            <div className='modal'>
+                                <h3>Confirm Deletion</h3>
+                                <p>Are you sure you want to delete #{data.id.substr(0, 6).toUpperCase()}? This action cannot be done</p>
+                                <div className='details_btns modal_btns'>
+                                    <button className='edit_btn' onClick={modalToggle}>
+                                        Cancel
+                                    </button>
+                                    <button className='delete_btn' onClick={()=> deleteInvoice(data.id)} style={{ margin: "5px" }}>
+                                        Confirm
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button className="delete_btn" onClick={modalToggle}>
                             Delete
                         </button>
-                        <button className={`${data.status === 'paid' || data.status === 'draft' ? 'disable' : ''} mark_as-btn`}>
+                        <button onClick={() => updateStatus(data.id)} className={`${data.status === 'paid' || data.status === 'draft' ? 'disable' : ''} mark_as-btn`}>
                             Mark as Paid
                         </button>
                     </div>
