@@ -12,7 +12,7 @@ const Sidebar = () => {
             <div className="sidebar_container">
                 <div className="sidebar_header">
                      <div className="sidebar_logo">
-                        <h2>Noman</h2>
+                        <h2>Noman Coder's</h2>
                     </div>
                 </div>
                 <div className="icon-container">

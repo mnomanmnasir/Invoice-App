@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react'
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
+import Helmet from '../../Helmet/Helmet'
+
 
 const addNew = () => {
 
@@ -86,6 +88,9 @@ const addNew = () => {
 
     return (
         <>
+        
+        <Helmet title='Add User'>
+            
             <div className="main_container">
                 <div className="new_invoice">
                     <div className="new_invoice-header">
@@ -216,6 +221,7 @@ const addNew = () => {
                     </div>
                 </div>
             </div>
+            </Helmet>
         </>
     )
 }

@@ -2,6 +2,8 @@ import React, { useRef } from 'react'
 import { useRouter } from 'next/router';
 import { MongoClient, ObjectId } from 'mongodb'
 import { toast } from 'react-toastify';
+import Helmet from '../../../Helmet/Helmet'
+
 
 
 const InvoiceDetails = (props) => {
@@ -17,21 +19,22 @@ const InvoiceDetails = (props) => {
     };
 
     //update invoice status  in database
-    const updateStatus = async invoiceId => {
+    const updateStatus = async (invoiceId) => {
         const res = await fetch(`/api/invoices/${invoiceId}`, {
             method: 'PUT'
         })
         const data = await res.json();
     }
+
     // delete invoice from the database
-    const deleteInvoice  = async invoiceId =>{
+    const deleteInvoice = async invoiceId => {
         try {
-            const res = await fetch(`/api/invoices/${invoiceId}`,{
+            const res = await fetch(`/api/invoices/${invoiceId}`, {
                 method: 'DELETE'
             })
             const data = await res.json();
             toast.success(data.message)
-            router.push('/') 
+            router.push('/')
         } catch (error) {
             toast.error("Something went wrong!")
         }
@@ -41,6 +44,9 @@ const InvoiceDetails = (props) => {
     const modalToggle = () => modalRef.current.classList.toggle('showModal')
     return (
         <>
+        
+        <Helmet title='Invoices Data'>
+            
             <div className="main_container">
                 <div className="back_btn">
                     <button className="btn" onClick={navigateToHomePage}>
@@ -72,7 +78,7 @@ const InvoiceDetails = (props) => {
                                     <button className='edit_btn' onClick={modalToggle}>
                                         Cancel
                                     </button>
-                                    <button className='delete_btn' onClick={()=> deleteInvoice(data.id)} style={{ margin: "5px" }}>
+                                    <button className='delete_btn' onClick={() => deleteInvoice(data.id)} style={{ margin: "5px" }}>
                                         Confirm
                                     </button>
                                 </div>
@@ -162,6 +168,8 @@ const InvoiceDetails = (props) => {
                     </div>
                 </div>
             </div>
+            
+            </Helmet>
         </>
     )
 }

@@ -18,6 +18,8 @@ async function handler(req, res) {
             })
         client.close()
     }
+
+
     // delete request
     if (req.method === 'DELETE') {
         await collection.deleteOne({ _id: new ObjectId(invoiceId) });
